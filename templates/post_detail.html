@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{post.title}}{% endblock%}
+
+{%block css%}
+	.{{post.sport_name}} {
+  			background-color: #4CAF50;
+  		}
+  	
+{%endblock%}
+
+{%block content%}
+	<h2>{{post.title}} <a href="/edit/{{post.id}}/"><button>Edit</button></a></h2>
+	<h6>{{post.date}}</h6>
+	<img src="{{post.image.url}}" width="500px" height="300px" />
+	<p>{{post.body}}</p>
+
+	<h4>Comments</h4>
+	{% for comment in comments%}
+		<p>Time: {{comment.date|date:"d. m. Y H:i" }}</p>
+		<p>Author: {{comment.author}}</p>
+		<p>Comment: {{comment.body}}</p><br/>
+	{%endfor%}
+
+	<h4>Add Comment</h4>
+	<form action='/{{post.sport_name}}/{{post.id}}/' method="POST">
+		{% csrf_token %}
+		{{comment_form.as_p}}
+		<input type="submit" name="Send Comment">
+	</form>
+{%endblock%}

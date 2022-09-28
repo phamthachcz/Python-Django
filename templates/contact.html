@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block tittle %}
+Contact
+{% endblock%}
+
+{%block css%}
+	.contact {
+  			background-color: #4CAF50;
+  		}
+  	
+{%endblock%}
+
+{%block content%}
+	<h3>IF YOU HAVE SOME QUESTIONS. PLEASE SEND INFORMATION</h3>
+	<h4>Contact</h4>
+	<form action="/contact/" method="POST">
+		{% csrf_token %}
+		{{contact_form.as_p}}
+		<input type="submit" name="Send">
+	</form>
+{%endblock%}

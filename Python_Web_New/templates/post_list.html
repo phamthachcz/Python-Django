@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{sport}}{% endblock%}
+
+{%block css%}
+	.{{sport}} {
+  			background-color: #4CAF50;
+  		}
+  	
+{%endblock%}
+
+{%block content%}
+	{%for post in posts%}
+		<p>{{post.title}}</p><br/>
+		<a href="/{{sport}}/{{post.id}}"><img src="{{post.image.url}}" width="500px" height="300px" /></a>
+	{% endfor%}
+
+{%endblock%}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+{% block title %}
+{% endblock%}
+</title>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+
+
+{%block css%}
+
+{%endblock%}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  {%for sport in sports %}
+      <li><a class="{{sport.name}}" href="/{{sport.name}}">{{sport.name}}</a></li>
+  {% endfor %}
+  <li><a class="contact" href="/contact/">Contact</a></li>
+  <li><a class="about" href="/about/">About</a></li>
+  <li style="float:right"><a href="/admin/">Login</a></li>
+</ul>
+{%block content%}
+
+{%endblock%}
+
+</body>
+</html>

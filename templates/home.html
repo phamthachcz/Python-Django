@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block tittle %}
+Home
+{% endblock%}
+
+{%block css%}
+	.active {
+  			background-color: #4CAF50;
+  		}
+  	
+{%endblock%}
+
+{%block content%}
+	<h1>Lastest News</h1>
+	{% for post in posts %}
+		<h3>{{post.title}} || {{post.sport_name}}</h3>
+		<a href="/{{post.sport_name}}/{{post.id}}"><img src="{{post.image.url}}" width="500px" height="300px" /></a>
+	{% endfor%}
+
+{%endblock%}
